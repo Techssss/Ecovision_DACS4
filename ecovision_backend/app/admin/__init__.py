@@ -1,0 +1,4 @@
+"""
+Admin module for dashboard
+"""
+

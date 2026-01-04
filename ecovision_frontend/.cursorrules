@@ -1,0 +1,93 @@
+# EcoVision Mobile - Project Rules
+
+## Project Overview
+EcoVision Mobile là ứng dụng Flutter theo dõi chất lượng không khí (AQI) và tìm lộ trình di chuyển thông minh.
+
+## Architecture
+- **Pattern**: Clean Architecture với Feature-First structure
+- **State Management**: Flutter Riverpod
+- **Language**: Dart (code in English, comments in Vietnamese)
+
+## Project Structure
+```
+lib/
+├── core/              # Shared code (theme, colors, text styles)
+├── common/            # Shared widgets (bottom nav, etc.)
+├── features/          # Feature modules
+│   ├── auth/         # Authentication
+│   ├── home/         # Home screen with AQI data
+│   ├── map/          # Map with route planning
+│   ├── report/       # Pollution reporting
+│   ├── chat/         # AI chat assistant
+│   └── profile/      # User profile
+├── routing/          # Navigation
+└── main.dart         # Entry point
+```
+
+## Feature Structure (Clean Architecture)
+Each feature follows this structure:
+```
+features/[feature_name]/
+├── data/
+│   ├── models/          # Data models (JSON serialization)
+│   ├── services/        # API services (HTTP calls)
+│   └── repositories/    # Business logic + caching
+├── domain/
+│   └── models/          # Domain models (UI models)
+└── presentation/
+    ├── pages/           # Screens
+    ├── widgets/         # UI components
+    └── providers/       # State management (Riverpod)
+```
+
+## Data Flow
+```
+UI (Widget) → Provider (Riverpod) → Repository → Service → API
+```
+
+## Coding Standards
+1. **Code Language**: Always write code in English
+2. **Comments**: Can use Vietnamese for comments
+3. **Naming**: Use descriptive English names
+4. **State Management**: Use Riverpod providers
+5. **Error Handling**: Always handle errors gracefully with fallbacks
+
+## Dependencies
+- flutter_riverpod: State management
+- google_fonts: Custom fonts (Inter)
+- flutter_map: OpenStreetMap integration
+- geolocator: Location services
+- geocoding: Address geocoding
+- permission_handler: Permissions
+- fl_chart: Charts
+- image_picker: Image selection
+- http: HTTP requests
+- shared_preferences: Local storage
+
+## Current Status
+- ✅ Home page with AQI data (using AQICN API)
+- ✅ Map page with OpenStreetMap (free, no API key)
+- ✅ Report page (mock data)
+- ✅ Chat page (mock responses)
+- ✅ Profile page (mock data)
+- ⚠️ Authentication page exists but not integrated
+- ⚠️ Most features use mock data, waiting for backend API
+
+## API Integration
+- Currently using AQICN API for AQI data
+- Backend API guide: See BACKEND_API_GUIDE.md
+- Cache strategy: 15 minutes for AQI data
+
+## Important Notes
+- Location fallback: Da Nang, Vietnam (16.0544, 108.2022)
+- Cache duration: 15 minutes for AQI
+- Map: Using OpenStreetMap (free alternative to Google Maps)
+- Mock data: Used for Chat, Report, Profile features
+
+## Future Work
+- Integrate backend API (see BACKEND_API_GUIDE.md)
+- Replace mock data with real API calls
+- Add authentication flow
+- Implement push notifications
+- Add offline support
+

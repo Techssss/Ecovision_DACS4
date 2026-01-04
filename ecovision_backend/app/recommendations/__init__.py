@@ -1,0 +1,4 @@
+"""
+AI Recommendations module
+"""
+
