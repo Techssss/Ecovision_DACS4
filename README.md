@@ -1,19 +1,16 @@
-# 🌱 EcoVision - Air Quality Monitoring & Pollution Reporting Platform
+# EcoVision
 
-> A comprehensive platform for monitoring air quality, reporting pollution, and promoting environmental awareness.
+A platform for monitoring air quality, reporting pollution, and promoting environmental awareness.
 
----
+## Overview
 
-## 📋 Project Overview
+EcoVision is a full-stack application with three components:
 
-**EcoVision** is a full-stack application consisting of:
-- 🤖 **AI-Powered Backend** (FastAPI + Groq AI + YOLOv8)
-- 📱 **Mobile App** (Flutter)
-- 💻 **Admin Dashboard** (React + TypeScript)
+- **Backend** — FastAPI + Groq AI + YOLOv8
+- **Mobile App** — Flutter
+- **Admin Dashboard** — React + TypeScript
 
----
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 EcoVision/
@@ -24,161 +21,95 @@ EcoVision/
 │   └── docs/               # Documentation
 │
 ├── ecovision_frontend/     # Flutter Mobile App
-│   ├── lib/                # Source code
-│   │   ├── features/       # Feature modules
-│   │   ├── core/           # Core utilities
-│   │   └── common/         # Shared widgets
-│   └── docs/               # Documentation
+│   ├── lib/
+│   │   ├── features/
+│   │   ├── core/
+│   │   └── common/
+│   └── docs/
 │
 ├── admin_ecovision_web/    # React Admin Dashboard
-│   ├── src/                # Source code
-│   │   ├── pages/          # Page components
-│   │   ├── components/     # Reusable components
-│   │   └── lib/            # Utilities
-│   └── public/             # Static assets
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   └── lib/
+│   └── public/
 │
-├── SETUP_GUIDE.md          # Initial setup guide
-├── COMMANDS.md             # Common commands
-└── YOLO_MODEL_GUIDE.md     # YOLOv8 model guide
+├── SETUP_GUIDE.md
+├── COMMANDS.md
+└── YOLO_MODEL_GUIDE.md
 ```
 
----
+## Features
 
-## ✨ Key Features
+### Backend
 
-### 🤖 **AI-Powered Backend**
-- **Groq AI Chatbot** - Context-aware Vietnamese chatbot (Llama 3.3 70B)
-- **YOLOv8 Detection** - Pollution detection (Graffiti, Garbage, Sand on road)
-- **Real-time AQI** - Air quality monitoring
-- **Smart Reports** - Fast report creation with on-demand AI analysis
+- Vietnamese chatbot powered by Groq (Llama 3.3 70B)
+- YOLOv8 pollution detection: graffiti, garbage, sand on road
+- Real-time AQI data
+- Fast report creation with optional on-demand AI analysis
 
-### 📱 **Mobile App**
-- **AQI Monitoring** - Real-time air quality data
-- **Pollution Reporting** - Photo-based reporting with AI analysis
-- **AI Chat Assistant** - Get environmental advice
-- **Route Planning** - Find cleanest routes
-- **User Gamification** - Points, ranks, rewards
+### Mobile App
 
-### 💻 **Admin Dashboard**
-- **Report Management** - Review and manage pollution reports
-- **AI Analysis** - View YOLOv8 detection results
-- **Statistics** - Dashboard with charts and metrics
-- **User Management** - Manage users and permissions
+- Real-time AQI monitoring
+- Photo-based pollution reporting with AI analysis
+- Chat assistant for environmental advice
+- Route planning (cleanest routes)
+- Gamification system: points, ranks, rewards
 
----
+### Admin Dashboard
 
-## 🚀 Quick Start
+- Report review and management
+- YOLOv8 detection result viewer
+- Statistics dashboard with charts
+- User management and permissions
 
-### **Prerequisites**
+## Prerequisites
+
 - Python 3.11+
 - Flutter SDK 3.35+
 - Node.js 18+
-- PostgreSQL/SQLite
+- PostgreSQL or SQLite
 
-### **1. Backend Setup**
+## Setup
+
+### 1. Backend
+
 ```bash
 cd ecovision_backend
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Configure environment
 cp .env.example .env
 # Edit .env with your keys
-
-# Initialize database
 python scripts/init_sqlite_db.py
-
-# Start server
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-**Backend will run at:** http://localhost:8000
+Runs at `http://localhost:8000`
 
-### **2. Mobile App Setup**
+### 2. Mobile App
+
 ```bash
 cd ecovision_frontend
-
-# Install dependencies
 flutter pub get
-
-# Run app
 flutter run
 ```
 
-### **3. Admin Dashboard Setup**
+### 3. Admin Dashboard
+
 ```bash
 cd admin_ecovision_web
-
-# Install dependencies
 npm install
-
-# Start dev server
 npm run dev
 ```
 
-**Admin dashboard will run at:** http://localhost:3000
+Runs at `http://localhost:3000`
 
----
+## Configuration
 
-## 📚 Documentation
+### Backend `.env`
 
-### **Main Guides**
-- **Setup Guide:** `SETUP_GUIDE.md` - Initial project setup
-- **Commands:** `COMMANDS.md` - Common commands reference
-- **YOLO Model:** `YOLO_MODEL_GUIDE.md` - YOLOv8 model documentation
-
-### **Backend Documentation**
-- **Production Guide:** `ecovision_backend/PRODUCTION_READY.md`
-- **Chatbot Guide:** `ecovision_backend/CHATBOT_GUIDE.md`
-- **Quick Start:** `ecovision_backend/QUICK_START_CHATBOT.md`
-- **API Docs:** http://localhost:8000/docs (when running)
-
-### **Frontend Documentation**
-- **Chat Integration:** `ecovision_frontend/CHAT_INTEGRATION_GUIDE.md`
-- **Backend API Guide:** `ecovision_frontend/BACKEND_API_GUIDE.md`
-- **Cleanup Plan:** `ecovision_frontend/CLEANUP_PLAN.md`
-
----
-
-## 🎯 Key Technologies
-
-### **Backend**
-- **Framework:** FastAPI
-- **Database:** SQLite (dev) / PostgreSQL (prod)
-- **AI/ML:** 
-  - Groq API (Llama 3.3 70B) for chatbot
-  - YOLOv8 for object detection
-- **Authentication:** JWT
-- **Image Storage:** Cloudinary (optional)
-
-### **Mobile App**
-- **Framework:** Flutter
-- **State Management:** Riverpod
-- **Architecture:** Clean Architecture
-- **Maps:** Google Maps / Mapbox
-- **HTTP Client:** http package
-
-### **Admin Dashboard**
-- **Framework:** React + TypeScript
-- **Build Tool:** Vite
-- **UI Library:** Tailwind CSS + shadcn/ui
-- **Charts:** Recharts
-- **Maps:** Leaflet
-
----
-
-## 🔧 Configuration
-
-### **Backend (.env)**
 ```env
-# Database
 DATABASE_URL=sqlite:///./ecovision.db
-
-# Security
 SECRET_KEY=your-secret-key
-
-# AI
 GROQ_API_KEY=your-groq-api-key
 YOLO_MODEL_PATH=models/yolov8_pollution.pt
 
@@ -187,8 +118,10 @@ CLOUDINARY_CLOUD_NAME=your-cloud-name
 USE_CLOUDINARY=false
 ```
 
-### **Mobile App**
-Update base URL in:
+### Mobile App
+
+Update the base URL in:
+
 - `lib/features/auth/data/services/auth_service.dart`
 - `lib/features/chat/data/services/chat_service.dart`
 
@@ -203,63 +136,52 @@ baseUrl: 'http://localhost:8000/api/v1'
 baseUrl: 'http://YOUR_IP:8000/api/v1'
 ```
 
----
+## Performance
 
-## 📊 Performance
+| Component | Target |
+|---|---|
+| Backend API | < 200ms |
+| Report creation | 2–4s (fast mode) |
+| YOLOv8 detection | 5–6s (on-demand) |
+| Chat response | 0.5–1s |
+| Mobile app | 60 FPS |
 
-| Component | Performance |
-|-----------|-------------|
-| Backend API | <200ms response |
-| Report Creation | 2-4s (fast mode) |
-| YOLOv8 Detection | 5-6s (on-demand) |
-| Chat Response | 0.5-1s (Groq) |
-| Mobile App | 60 FPS |
+## Testing
 
----
+### Backend
 
-## 🧪 Testing
-
-### **Backend**
 ```bash
 cd ecovision_backend
-
-# Health check
 curl http://localhost:8000/health
-
-# Run tests
 pytest
 ```
 
-### **Mobile App**
+### Mobile App
+
 ```bash
 cd ecovision_frontend
-
-# Run tests
 flutter test
-
-# Run integration tests
 flutter drive --target=test_driver/app.dart
 ```
 
-### **Admin Dashboard**
+### Admin Dashboard
+
 ```bash
 cd admin_ecovision_web
-
-# Run tests
 npm test
 ```
 
----
+## Deployment
 
-## 🚢 Deployment
+### Backend (Docker)
 
-### **Backend (Docker)**
 ```bash
 cd ecovision_backend
 docker-compose up -d
 ```
 
-### **Mobile App**
+### Mobile App
+
 ```bash
 # Android
 flutter build apk --release
@@ -268,80 +190,66 @@ flutter build apk --release
 flutter build ios --release
 ```
 
-### **Admin Dashboard**
+### Admin Dashboard
+
 ```bash
 cd admin_ecovision_web
 npm run build
-# Deploy dist/ folder to hosting
+# Deploy the dist/ folder
 ```
 
----
+## Documentation
 
-## 🤝 Contributing
+| File | Description |
+|---|---|
+| `SETUP_GUIDE.md` | Initial project setup |
+| `COMMANDS.md` | Common commands reference |
+| `YOLO_MODEL_GUIDE.md` | YOLOv8 model documentation |
+| `ecovision_backend/PRODUCTION_READY.md` | Backend production guide |
+| `ecovision_backend/CHATBOT_GUIDE.md` | Chatbot configuration |
+| `ecovision_frontend/BACKEND_API_GUIDE.md` | API integration guide |
+| API Docs | `http://localhost:8000/docs` (when server is running) |
+
+## Tech Stack
+
+### Backend
+- FastAPI, SQLite (dev) / PostgreSQL (prod)
+- Groq API (Llama 3.3 70B), YOLOv8
+- JWT authentication, Cloudinary (optional)
+
+### Mobile App
+- Flutter, Riverpod, Clean Architecture
+- Google Maps / Mapbox, Leaflet
+
+### Admin Dashboard
+- React + TypeScript, Vite
+- Tailwind CSS + shadcn/ui, Recharts
+
+## Status
+
+| Component | Status |
+|---|---|
+| Backend | Production ready |
+| Admin Dashboard | Production ready |
+| Mobile App | ~50% API integrated |
+
+### Mobile App Integration Progress
+
+- Auth — done
+- Chat — done
+- AQI — done
+- Report — partial
+- Map — mock data
+- Profile — mock data
+
+## Contributing
 
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add your feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a pull request
 
----
+***
 
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 📞 Support
-
-- **Documentation:** Check `/docs` in each project
-- **Issues:** GitHub Issues
-- **Email:** support@ecovision.com
-
----
-
-## 🎉 Status
-
-### **Backend:** ✅ Production Ready
-- ✅ All features implemented
-- ✅ AI chatbot working (Groq)
-- ✅ YOLOv8 detection optimized
-- ✅ Database schema stable
-
-### **Mobile App:** ⚠️ 50% API Integrated
-- ✅ Chat integrated
-- ✅ Auth integrated
-- ✅ AQI integrated
-- ⚠️ Report (partial)
-- ⚠️ Map (mock)
-- ⚠️ Profile (mock)
-
-### **Admin Dashboard:** ✅ Production Ready
-- ✅ Report management
-- ✅ AI analysis view
-- ✅ Statistics dashboard
-- ✅ Delete functionality
-
----
-
-## 🗺️ Roadmap
-
-### **Q1 2025**
-- [ ] Complete mobile app API integration
-- [ ] Add offline mode
-- [ ] Implement push notifications
-- [ ] Add more pollution types
-
-### **Q2 2025**
-- [ ] Multi-language support
-- [ ] Advanced analytics
-- [ ] Rewards system
-- [ ] Community features
-
----
-
-**Built with ❤️ for a cleaner environment 🌱**
-
-**Version:** 2.0.0  
-**Last Updated:** 2024-11-24
+Version 2.0.0 — Last updated: 2024-11-24
